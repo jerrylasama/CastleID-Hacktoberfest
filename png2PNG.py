@@ -2,16 +2,16 @@ import os
 
 print("========png to PNG========")
 
-path = "./"
+path = './'
 
 for path, subdirs, files in os.walk(path):
     for f in files:
-        # print(os.path.join(path, f))
-
-        if not f.endswith(".png"):
-            isFile = os.path.isfile(path + f)
+        curPath = os.path.join(path, f)
+        
+        if not f.endswith('.png'):
+            isFile = os.path.isfile(curPath)
             if isFile:
-                file = open(path + f, "rb+")
+                file = open(curPath,"rb+")
                 file.seek(1)
                 isPNG = file.read(3)
                 if str(isPNG) == "b'png'":
@@ -19,7 +19,7 @@ for path, subdirs, files in os.walk(path):
                     # go back to begining of byte
                     file.seek(1)
                     # replacing png to PNG
-                    file.write(b"PNG")
+                    file.write(b'PNG')
                     # update the isPNG variable
                     file.seek(1)
                     isPNG = file.read(3)
@@ -27,7 +27,8 @@ for path, subdirs, files in os.walk(path):
                 file.close()
                 # check again if the file successfuly converted then rename the file
                 if str(isPNG) == "b'PNG'":
-                    os.rename(path + f, path + f + ".png")
+                    os.rename(curPath,curPath + ".png")
                     print("[C] successfuly convert the file.")
         else:
             print("[F] " + f + " already converted.")
+
