@@ -2,13 +2,13 @@ import os
 
 print("========png to PNG========")
 
-path = './'
+path = "./"
 
 for path, subdirs, files in os.walk(path):
     for f in files:
         curPath = os.path.join(path, f)
 
-        if not f.endswith('.png'):
+        if not f.endswith(".png"):
             isFile = os.path.isfile(curPath)
             if isFile:
                 file = open(curPath, "rb+")
@@ -19,7 +19,7 @@ for path, subdirs, files in os.walk(path):
                     # go back to begining of byte
                     file.seek(1)
                     # replacing png to PNG
-                    file.write(b'PNG')
+                    file.write(b"PNG")
                     # update the isPNG variable
                     file.seek(1)
                     isPNG = file.read(3)
