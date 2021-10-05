@@ -1,11 +1,12 @@
-from requests import *
-from bs4 import BeautifulSoup
-from Crypto.Cipher import PKCS1_v1_5
-from Crypto.PublicKey import RSA
 import base64
 import configparser
 import threading
 import time
+
+from bs4 import BeautifulSoup
+from Crypto.Cipher import PKCS1_v1_5
+from Crypto.PublicKey import RSA
+from requests import *
 
 
 def doFRS(username, password, datMK, index):
