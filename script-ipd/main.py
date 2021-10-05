@@ -17,24 +17,29 @@ def doFRS(username, password, datMK, index):
     rsa_key = RSA.importKey(pubkey)
     cipher = PKCS1_v1_5.new(rsa_key)
     dataLogin = base64.b64encode(
-        cipher.encrypt(username.encode() + b"|||" + password.encode())
-    )
+        cipher.encrypt(username.encode() + b"|||" + password.encode()))
 
     # Attempt login integra
     LOGIN_INTEGRA = "https://integra.its.ac.id/index.php"
     page = session.get(LOGIN_INTEGRA)
     time.sleep(1)
-    page = session.post(LOGIN_INTEGRA, data={"content": dataLogin, "p": "", "n": ""})
+    page = session.post(LOGIN_INTEGRA,
+                        data={
+                            "content": dataLogin,
+                            "p": "",
+                            "n": ""
+                        })
     time.sleep(1)
     page = session.get("http://integra.its.ac.id/dashboard.php")
     time.sleep(1)
     if username in page.text:
         print("Login Sukses")
         # page = session.get('https://integra.its.ac.id/dashboard.php?sim=AKAD__-__')
-        page = session.get("https://integra.its.ac.id/dashboard.php?sim=AKAD__10__")
+        page = session.get(
+            "https://integra.its.ac.id/dashboard.php?sim=AKAD__10__")
         time.sleep(1)
         mulai = page.text.find("URL=")
-        akademik = page.text[mulai + 4 : -2]
+        akademik = page.text[mulai + 4:-2]
         # print(akademik)
         page = session.get(akademik)
         time.sleep(1)
@@ -46,7 +51,8 @@ def doFRS(username, password, datMK, index):
         print(ambilFRS)
         # page = session.get('https://akademik.its.ac.id/list_frs.php')
         # print(page.text)
-        page = session.post("https://akademik.its.ac.id/list_frs.php", data=ambilFRS)
+        page = session.post("https://akademik.its.ac.id/list_frs.php",
+                            data=ambilFRS)
         soup = BeautifulSoup(page.text, "html.parser")
         redgagal = "#B30000"
         greensucc = "#006A00"
