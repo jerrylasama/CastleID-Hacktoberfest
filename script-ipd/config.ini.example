@@ -1,0 +1,22 @@
+;FORMAT PENULISAN MATKUL
+;kode_matkul|kelas|tahun|kode_jurusan
+;variable adalah MK + angka urut dimulai dari 0
+;variable N adalah jumlah total MK yang diambil
+;kode_matkul ambil dari integra tapi tanpa 18
+;untuk tahun sem ganjil adalah tahun ini namun sem genap adalah tahun ini - 1
+;jurusan informatika kodenya 51100
+;contoh IF4601|C|2018|51100
+;BELUM DI TEST KARENA BELUM FRS
+
+[USER]
+USERNAME = ;USERNAME INTEGRA
+PASSWORD = ;PASSWORD INTEGRA
+
+[MATKUL]
+N = 6
+MK0 = kode_matkul0|kelas0|tahun0|kode_jurusan0
+MK1 = kode_matkul1|kelas1|tahun1|kode_jurusan1
+MK2 = kode_matkul2|kelas2|tahun2|kode_jurusan2
+MK3 = kode_matkul3|kelas3|tahun3|kode_jurusan3
+MK4 = kode_matkul4|kelas4|tahun4|kode_jurusan4
+MK5 = kode_matkul5|kelas5|tahun5|kode_jurusan5
