@@ -28,13 +28,13 @@ if not f.endswith(".mp3"):
                 mm.seek(offset)
 
                 while True:
-                    mm.seek(offset+3)
+                    mm.seek(offset + 3)
                     offset = mm.find(hF)
                     if offset != -1:
                         print("Frame " + str(hex(offset)) + " FIXED")
                         mm.seek(offset)
-                        mm.write(b'\xFF\xF3\x84')
-                        mm.seek(offset-1)
+                        mm.write(b"\xFF\xF3\x84")
+                        mm.seek(offset - 1)
 
                     else:
                         mm.close()
