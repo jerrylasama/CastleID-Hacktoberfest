@@ -5,7 +5,7 @@ print("========MP3FIX========")
 
 f = "./c3aee919251cf4a95e02c78b1f0f0d343e7e50"
 
-#(12*32/48000+32)*4 = 128
+# (12*32/48000+32)*4 = 128
 
 if not f.endswith(".mp3"):
     isFile = os.path.isfile(f)
@@ -22,12 +22,11 @@ if not f.endswith(".mp3"):
             with open(f, "rb+") as file:
                 offset = 0
                 mm = mmap.mmap(file.fileno(), 0)
-                
-                mm.seek(0,2)
+
+                mm.seek(0, 2)
                 print("length file : " + str(mm.tell()))
                 mm.seek(offset)
 
-                
                 while True:
                     mm.seek(offset+3)
                     offset = mm.find(hF)
@@ -39,4 +38,4 @@ if not f.endswith(".mp3"):
 
                     else:
                         mm.close()
-                        break;
+                        break
