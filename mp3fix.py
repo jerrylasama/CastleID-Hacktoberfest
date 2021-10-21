@@ -1,5 +1,5 @@
-import os
 import mmap
+import os
 
 print("========MP3FIX========")
 
